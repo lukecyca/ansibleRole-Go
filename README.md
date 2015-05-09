@@ -1,0 +1,2 @@
+# ansibleRole-Go
+Install GoLang
