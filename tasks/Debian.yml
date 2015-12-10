@@ -1,23 +1,23 @@
 ---
-- name: Debin | Create go directory before src download
+- name: Debian | Create go directory before src download
   file: >
    path=/usr/local/src/go/
    state=directory
    owner=root group=root mode=0755
 
-- name: Debin | Download Go src file
+- name: Debian | Download Go src file
   get_url: >
    url={{ go.download_url }}/{{go.src_file_name}}
    dest=/usr/local/src/go/{{go.src_file_name}}
    sha256sum={{go.src_file_sha256}}
 
-- name: Debin | Extract the src Go file
+- name: Debian | Extract the src Go file
   unarchive: >
    src=/usr/local/src/go/{{go.src_file_name}}
    dest=/usr/local
    copy=no
 
-- name: Debin | Symlink Go into /usr/local/bin
+- name: Debian | Symlink Go into /usr/local/bin
   file: >
    src=/usr/local/go/bin/{{ item }}
    dest=/usr/local/bin/{{ item }}
